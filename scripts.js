@@ -36,15 +36,24 @@ form.addEventListener("submit", (event) => {
      result.innerText = "Division not performed. Invalid number provided. Try again"
    };
 
-   try {
-     if (dividend == Number || divider === 0) {
+     if ( divider === "0") {
      zeroError();
      throw new Error("Division by zero")
-   }
-   } catch (error) {
-     console.error(`Error: ${error.message}`)
-   }
- 
+   } 
  });
 
- 
+ form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const entries = new FormData(event.target);
+  const {dividend, divider} = Object.fromEntries(entries);
+  function stringError () {
+    document.body.innerHTML = "Something critical went wrong. Please reload the page";
+    console.error(new Error("The provided input was not a number"));
+
+  }
+  if (dividend !== Number || divider !== Number) {
+    stringError();
+  }
+ })
+
+
