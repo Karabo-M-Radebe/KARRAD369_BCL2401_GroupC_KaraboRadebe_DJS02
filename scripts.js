@@ -51,9 +51,9 @@ form.addEventListener("submit", (event) => {
     console.error(new Error("The provided input was not a number"));
 
   }
-  if (dividend !== Number || divider !== Number) {
+  if (isNaN(dividend) || isNaN(divider)) {
     stringError();
   }
- })
+ });
 
 
